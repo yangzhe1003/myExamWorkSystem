@@ -1,0 +1,18 @@
+                    作业考试系统项目分析
+1.建立express脚手架，安装所需要的依赖。
+2.建立数据库连接池
+    错误:
+        let pool = global.pool;
+        if(!pool){
+            let pool = mysql.createPool({
+                ...
+        }
+    原因:
+        第一句使用let已经定义了pool,let不能再次定义。
+
+3.写managerDB数据库
+4.写managerRoute路由接口
+    因为是用ES6写的后台,所以写后台时要加垫片,node.js对promise支持不太好.
+5.导入的exam数据库的choice表中correct的数据类型为BIT,这种数据类型获取不到数值,所以改为了Boolean类型.
+6.从数据库获取到的数据动态加载到页面上时,jquery无法直接获取到Dom节点,将选择器写到回调函数中解决问题.
+
