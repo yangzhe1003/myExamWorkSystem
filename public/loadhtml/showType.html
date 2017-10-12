@@ -67,6 +67,11 @@
 
     <script>
         $(function(){
+            $('.icon_add').on('click',function(){
+                $(".right").load("loadhtml/addSubject.html");
+            });
+            
+
             //获取所有题目类型
             $.getJSON("/exam/manager/getAllSubjectType",function(data){
                 var newTr = $(".tablea tr:first").clone();

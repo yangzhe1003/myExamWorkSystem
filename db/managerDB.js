@@ -42,5 +42,18 @@ module.exports = {
     getChoice(subject_id){
         let sql = "SELECT * FROM tbl_exam_choice where subject_id="+subject_id+";";
         return pool.execute(sql);
+    },
+
+    //保存题目信息
+    saveSubject(analysis, answer, stem, uploadTime, department_id, subjectLevel_id, subjectType_id, topic_id){
+        let sql = "INSERT INTO tbl_exam_subject VALUES(null, '"
+            +analysis+"', '"+answer+"', '未审核', '"+stem+"', '"+uploadTime+"', '"+department_id+"', '"+subjectLevel_id+"', '"+subjectType_id+"', '"+topic_id+"',null);";
+        return pool.execute(sql);
+    },
+
+    //保存单多选选项信息
+    saveChoices(content,correct,subject_id){
+        let sql = "INSERT INTO tbl_exam_choice VALUES(null,'"+content+"','"+correct+"','"+subject_id+"');";
+        return pool.execute(sql);
     }
 }
