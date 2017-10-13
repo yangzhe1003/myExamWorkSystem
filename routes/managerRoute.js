@@ -63,6 +63,16 @@ route.post('/checkSubject',(req,resp)=>{
     });
 });
 
+//删除题目
+route.post('/delSubject',(req,resp)=>{
+    let subject_id = req.body.subject_id;
+    managerDB.delSubject(subject_id).then((data)=>{
+        resp.send(data);
+    }).catch((err)=>{
+        resp.send(data);
+    });
+});
+
 //获取题目选项
 route.post('/getChoice',(req,resp)=>{
     let subject_id = req.body.subject_id;
@@ -76,7 +86,7 @@ route.post('/getChoice',(req,resp)=>{
 //保存题目信息
 route.post('/saveSubject',(req,resp)=>{
     let analysis = req.body.analysis;
-    let answer = req.body.answer;
+    let answer = req.body.answer.join();
     let stem = req.body.stem;
     let uploadTime = req.body.uploadTime;
     let department_id = req.body.department_id;
@@ -97,7 +107,6 @@ route.post('/saveChoices',(req,resp)=>{
     let choiceContent = req.body.choiceContent;
     let choiceCorrect = req.body.choiceCorrect;
     let subject_id = req.body.subject_id;
-    let choices={};
 
     for (let i = 0; i < choiceCorrect.length; i++) {
         let content = choiceContent[i];

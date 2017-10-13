@@ -38,6 +38,11 @@ module.exports = {
         return pool.execute(sql);
     },
 
+    delSubject(subject_id){
+        let sql = "DELETE FROM tbl_exam_subject WHERE id="+subject_id+";";
+        return pool.execute(sql);
+    },
+
     //显示题目选项
     getChoice(subject_id){
         let sql = "SELECT * FROM tbl_exam_choice where subject_id="+subject_id+";";
